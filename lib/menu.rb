@@ -9,9 +9,11 @@ class Menu
   end
 
   def read
-    @menu.each do |item|
-      return item
-    end
+    @menu.each { |item| return item } 
+  end
+
+  def find(desired_item)
+    @menu.select.first { |item| item.name == desired_item.downcase }
   end
 
 end
