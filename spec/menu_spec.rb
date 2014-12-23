@@ -16,5 +16,4 @@ describe Menu do
     expect(menu.find('calzone').price).to eq(7)
   end
 
-
 end

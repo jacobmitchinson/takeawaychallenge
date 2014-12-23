@@ -4,7 +4,7 @@ module Twilio
 
   def send_text
     account_sid = 'AC8fd356d09cec0d4617c7a7ca18db4ddc' 
-    auth_token = 'e86a2de62b7f7e5080bed5c8f39a977b' 
+    auth_token = ENV['TWILIO_KEY'] # insert twilio key here
 
     @client = Twilio::REST::Client.new account_sid, auth_token 
 
