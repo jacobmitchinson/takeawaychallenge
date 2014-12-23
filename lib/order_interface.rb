@@ -6,12 +6,11 @@ class OrderInterface
   attr_reader :order
   attr_accessor :menu
 
-  def initialize
-    @menu = Menu.new
+  def initialize(menu)
+    @menu = menu
     @order = Order.new(@menu)
     puts welcome_message
     puts @menu.read
-    input
   end
 
   def welcome_message
@@ -19,22 +18,30 @@ class OrderInterface
     "Here's the menu: "
   end
 
-  # def selection
-  #   "Please select your dish like so, 'calzone', 2:"
-  #   select()
-  # end
-
-  def select
-    @order.item(input)
-  end 
-
-  def input
+  def item
     puts "Please specify the item you would like: "
     item = gets.chomp
-    puts "Please specify the quantity you would like: "
-    quantity = gets.chomp
-    return item, quantity
+    return item
   end
 
+  def quantity 
+    puts "Please specify the quantity:"
+    quantity = gets.chomp
+    return quantity
+  end
+
+  def select
+    @order.item(item, quantity.to_i)
+  end 
+
+  def input_sum_total
+    puts "Please enter the sum total of the order:"
+    total = gets.chomp
+    return total
+  end
+
+  def sum_total_correct?
+    @order.sum_total_correct?(input_sum_total)
+  end
 
 end

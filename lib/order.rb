@@ -16,9 +16,14 @@ class Order
     @dishes.inject { |memo, item| memo.price + item.price }
   end
 
+  def sum_total_correct?(input_sum_total)
+    input_sum_total == sum_total ? true : false
+  end
+
   def dish_count
     @dishes.count
   end
+
 
 
 end
