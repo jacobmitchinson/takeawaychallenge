@@ -1,4 +1,3 @@
-# bug that's adding ordered items to menu
 require './lib/twilio_module'
 require './lib/menu'
 require './lib/order'
@@ -14,7 +13,7 @@ class OrderInterface
     @menu = Menu.new
     @order = Order.new(@menu)
     puts welcome_message
-    interactive_menu
+    # interactive_menu
   end
 
   def welcome_message
