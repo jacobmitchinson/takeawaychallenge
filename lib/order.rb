@@ -24,6 +24,4 @@ class Order
     @dishes.count
   end
 
-
-
 end
