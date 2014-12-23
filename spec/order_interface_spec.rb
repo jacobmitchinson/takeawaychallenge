@@ -8,7 +8,6 @@ describe OrderInterface do
     interface = OrderInterface.new
     allow(interface).to receive(:send_text).and_return("sent!")
     allow(interface).to receive(:interactive_menu)
-    interface.menu.store(calzone)
     allow(interface).to receive(:item).and_return("calzone")
     allow(interface).to receive(:quantity).and_return(2)
     interface.select
@@ -19,7 +18,6 @@ describe OrderInterface do
     interface = OrderInterface.new
     allow(interface).to receive(:send_text).and_return("sent!")
     allow(interface).to receive(:interactive_menu)
-    interface.menu.store(calzone)
     allow(interface).to receive(:item).and_return("calzone")
     allow(interface).to receive(:quantity).and_return(2)
     interface.select
