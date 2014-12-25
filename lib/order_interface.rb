@@ -13,7 +13,7 @@ class OrderInterface
     @menu = Menu.new
     @order = Order.new(@menu)
     puts welcome_message
-    # interactive_menu
+    interactive_menu
   end
 
   def welcome_message
@@ -46,6 +46,15 @@ class OrderInterface
     @order.sum_total_correct?(input_sum_total)
   end
 
+  def select_multiple_dishes
+    select
+    puts "Anything else? (yes, no)"
+    until gets.chomp == "no" 
+      select
+      puts "Anything else? (yes, no)"
+    end
+  end
+
   def selection(input)
     case input
       when "1"
@@ -53,12 +62,7 @@ class OrderInterface
           puts item.name.capitalize + ", £#{item.price}"
         end
       when "2"
-        select
-        puts "Anything else? (yes, no)"
-        until gets.chomp == "no" 
-          select
-          puts "Anything else? (yes, no)"
-        end
+        select_multiple_dishes
         if sum_total_correct?
           send_text 
         else
