@@ -36,5 +36,18 @@ describe OrderInterface do
     expect(interface.order.sum_total_correct?(interface.input_sum_total)).to be true
   end
 
+  it 'should enable the user to select multiple dishes' do 
+    interface_setup(interface)
+    allow(interface).to receive(:gets) do 
+      if interface.order.dish_count < 2
+        interface.select
+      else
+        "no"
+      end
+    end
+    interface.select_multiple_dishes
+    expect(interface.order.dish_count).to eq 4
+  end
+
 
 end
