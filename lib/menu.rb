@@ -31,7 +31,13 @@ class Menu
   end
 
   def find(desired_item)
-    @menu.select.first { |item| item.name == desired_item.downcase }
+    find = @menu.select { |item| item.name == desired_item.downcase }
+    begin 
+      raise "Sorry we don't have that on the menu!" if find.first.nil?
+    rescue 
+      return false
+    end
+    find.first
   end
 
 end

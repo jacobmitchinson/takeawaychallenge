@@ -13,7 +13,7 @@ class OrderInterface
     @menu = Menu.new
     @order = Order.new(@menu)
     puts welcome_message
-    interactive_menu
+    #interactive_menu
   end
 
   def welcome_message
@@ -33,8 +33,19 @@ class OrderInterface
   end
 
   def select
-    @order.item(item, quantity.to_i)
+    if @order.item(item, quantity.to_i) == 
+      "Sorry we don't have that on the menu!"
+      false_selection
+    else
+      return
+    end
   end 
+
+  def false_selection
+    puts "Sorry, we don't have that on the menu.
+          Please input your order again: "
+    select 
+  end
 
   def input_sum_total
     puts "Please enter the sum total of the order:"
@@ -58,9 +69,10 @@ class OrderInterface
   def selection(input)
     case input
       when "1"
-        @menu.read.each do |item|
+        menu = @menu.read.each do |item|
           puts item.name.capitalize + ", £#{item.price}"
         end
+        return menu
       when "2"
         select_multiple_dishes
         if sum_total_correct?
@@ -93,3 +105,5 @@ class OrderInterface
   end
 
 end
+
+# order = OrderInterface.new

@@ -8,7 +8,11 @@ class Order
   end
 
   def item(desired_item, quantity = 1)
-    item = @menu.find(desired_item)
+    if @menu.find(desired_item) == false
+      return "Sorry we don't have that on the menu!"
+    else
+      item = @menu.find(desired_item)
+    end
     quantity.times { @dishes << item }
   end
 

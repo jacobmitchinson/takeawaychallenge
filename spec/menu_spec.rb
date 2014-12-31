@@ -16,4 +16,8 @@ describe Menu do
     expect(menu.find('calzone').price).to eq(7)
   end
 
+  it "should return false if the dish doesn't exist" do 
+    expect(menu.find('dog')).to eq false
+  end
+
 end
