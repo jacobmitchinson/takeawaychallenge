@@ -52,10 +52,11 @@ describe OrderInterface do
       expect(interface.order.dish_count).to eq 4
     end
 
-    # it 'should read the menu' do 
-    #   interface_setup(interface)
-    #   expect(interface.selection("1")).to eq("Calzone, £7\nHawaiian, £8")
-    # end
+    it 'should read the menu' do 
+      interface_setup(interface)
+      expect(interface.selection("1")).to eq("Calzone, £7\nHawaiian, £8")
+    end
+
 
 
   end
