@@ -64,7 +64,8 @@ describe OrderInterface do
     it 'should get the sum total from the user' do
       interface_setup(interface)
       allow(interface).to receive(:input_sum_total).and_return(14)  
-      expect(interface.order.sum_total_correct?(interface.input_sum_total)).to be true
+      allow(interface).to receive(:gets).and_return("no")
+      expect(interface.selection("2")).to eq "That's not the correct sum total!"
     end
 
   end

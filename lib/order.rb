@@ -17,7 +17,8 @@ class Order
   end
 
   def sum_total
-    @dishes.inject { |memo, item| memo.price + item.price }
+    total = @dishes.inject(@dishes[0].price) { |memo, item| memo + item.price } 
+    total - @dishes[0].price # bit of an odd implementation but this is done to start memo as the first dish price
   end
 
   def sum_total_correct?(input_sum_total)
