@@ -76,6 +76,7 @@ class OrderInterface
         select_multiple_dishes
         if sum_total_correct?
           send_text 
+          p "Thanks for completing your order with Jake's Pizza"
         else
           puts "That's not the correct sum total!"
           input == 2 
