@@ -69,10 +69,9 @@ class OrderInterface
   def selection(input)
     case input
       when "1"
-        menu = @menu.read.each do |item|
+        @menu.read.each do |item|
           puts item.name.capitalize + ", £#{item.price}"
         end
-        return menu
       when "2"
         select_multiple_dishes
         if sum_total_correct?
