@@ -13,7 +13,7 @@ class OrderInterface
     @menu = Menu.new
     @order = Order.new(@menu)
     puts welcome_message
-    #interactive_menu
+    interactive_menu
   end
 
   def welcome_message
@@ -78,8 +78,8 @@ class OrderInterface
           send_text 
           p "Thanks for completing your order with Jake's Pizza"
         else
-          puts "That's not the correct sum total!"
-          input == 2 
+          p "That's not the correct sum total!"
+          input = 2 
         end
       when "9"
         puts "Goodbye"
@@ -106,4 +106,4 @@ class OrderInterface
 
 end
 
-# order = OrderInterface.new
+ #order = OrderInterface.new

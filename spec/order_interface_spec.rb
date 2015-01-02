@@ -70,13 +70,13 @@ describe OrderInterface do
       expect(interface.selection("2")).to eq("Thanks for completing your order with Jake's Pizza") 
     end
 
-     it 'should get the sum total from the user and request that the order total be reentered if it is incorrect' do
+    it 'should get the sum total from the user and request that the order total be reentered if it is incorrect' do
       allow(interface).to receive(:send_text).and_return("sent!")
       allow(interface).to receive(:item).and_return("calzone")
       allow(interface).to receive(:quantity).and_return(2)
-      allow(interface).to receive(:input_sum_total) 
+      allow(interface).to receive(:input_sum_total).and_return(13)
       allow(interface).to receive(:gets).and_return("no")
-      expect()
+      expect(interface.selection("2")).to eq(input = 2) 
     end
 
 
