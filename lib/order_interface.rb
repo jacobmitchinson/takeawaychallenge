@@ -105,5 +105,3 @@ class OrderInterface
   end
 
 end
-
- #order = OrderInterface.new
