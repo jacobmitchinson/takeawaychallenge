@@ -61,26 +61,30 @@ describe OrderInterface do
 
   context "before completing an order" do 
 
-    it 'should get the sum total from the user and complete the order if it is correct' do
+    def complete_order(interface, sum_total)
       allow(interface).to receive(:send_text).and_return("sent!")
       allow(interface).to receive(:item).and_return("calzone")
       allow(interface).to receive(:quantity).and_return(2)
-      allow(interface).to receive(:input_sum_total).and_return(14)  
+      allow(interface).to receive(:input_sum_total).and_return(sum_total)  
       allow(interface).to receive(:gets).and_return("no")
+    end
+
+    it 'should get the sum total from the user and complete the order if it is correct' do
+      complete_order(interface, 14)
       expect(interface.selection("2")).to eq("Thanks for completing your order with Jake's Pizza") 
     end
 
     # this might need to be redone as to completely test this we will need to recycle through input 2 and ensure it completes the order
 
     it 'should get the sum total from the user and request that the order total be reentered if it is incorrect' do
-      allow(interface).to receive(:send_text).and_return("sent!")
-      allow(interface).to receive(:item).and_return("calzone")
-      allow(interface).to receive(:quantity).and_return(2)
-      allow(interface).to receive(:input_sum_total).and_return(13)
-      allow(interface).to receive(:gets).and_return("no")
+      complete_order(interface, 16)
       expect(interface.selection("2")).to eq(input = 2) 
     end
 
+    it 'should send a text after the correct sum total is entered' do 
+      allow(interface).to receive(:send_text).and_return("sent!")
+      expect(interface.send_text).to eq("sent!")
+    end
 
   end
 

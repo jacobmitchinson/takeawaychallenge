@@ -13,6 +13,7 @@ module Twilio
       :from => '+14842342425',   
       :body => "Thanks for ordering with Jake's pizza! Your food is on it's way!" 
     }) 
+    return true
   end
 
 end
