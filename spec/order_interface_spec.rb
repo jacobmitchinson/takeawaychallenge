@@ -59,8 +59,6 @@ describe OrderInterface do
 
   end
 
-  # what i want to do is make the input_sum_total a unvalid number the first time it is called and a valid number the second time it is called
-
   context "before completing an order" do 
 
     def complete_order(interface, sum_total)
