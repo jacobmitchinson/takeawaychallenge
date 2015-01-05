@@ -54,7 +54,10 @@ class OrderInterface
   end
 
   def sum_total_correct?
-    @order.sum_total_correct?(input_sum_total)
+    until @order.sum_total_correct?(input_sum_total) == true
+      puts "That's not the correct sum total"
+    end
+    return true
   end
 
   def select_multiple_dishes
@@ -77,9 +80,6 @@ class OrderInterface
         if sum_total_correct?
           send_text 
           p "Thanks for completing your order with Jake's Pizza"
-        else
-          p "That's not the correct sum total!"
-          input = 2 
         end
       when "9"
         puts "Goodbye"

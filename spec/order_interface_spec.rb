@@ -59,13 +59,26 @@ describe OrderInterface do
 
   end
 
+  # what i want to do is make the input_sum_total a unvalid number the first time it is called and a valid number the second time it is called
+
   context "before completing an order" do 
 
     def complete_order(interface, sum_total)
       allow(interface).to receive(:send_text).and_return("sent!")
       allow(interface).to receive(:item).and_return("calzone")
       allow(interface).to receive(:quantity).and_return(2)
-      allow(interface).to receive(:input_sum_total).and_return(sum_total)  
+      allow(interface).to receive(:input_sum_total).and_return(sum_total)
+      allow(interface).to receive(:gets).and_return("no")
+    end
+
+    def incorrect_order(interface)
+      allow(interface).to receive(:send_text).and_return("sent!")
+      allow(interface).to receive(:item).and_return("calzone")
+      allow(interface).to receive(:quantity).and_return(2)
+      count = 0 
+      allow(interface).to receive(:input_sum_total) do
+        count < 1 ? (16; count += 1) : 14
+      end
       allow(interface).to receive(:gets).and_return("no")
     end
 
@@ -74,11 +87,9 @@ describe OrderInterface do
       expect(interface.selection("2")).to eq("Thanks for completing your order with Jake's Pizza") 
     end
 
-    # this might need to be redone as to completely test this we will need to recycle through input 2 and ensure it completes the order
-
     it 'should get the sum total from the user and request that the order total be reentered if it is incorrect' do
-      complete_order(interface, 16)
-      expect(interface.selection("2")).to eq(input = 2) 
+      incorrect_order(interface)
+      expect(interface.selection("2")).to eq("Thanks for completing your order with Jake's Pizza") 
     end
 
     it 'should send a text after the correct sum total is entered' do 

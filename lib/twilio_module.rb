@@ -3,7 +3,7 @@ module Twilio
   require 'twilio-ruby' 
 
   def send_text
-    account_sid = 'AC8fd356d09cec0d4617c7a7ca18db4ddc' 
+    account_sid = 'AC8fd356d09cec0d4617c7a7ca18db4ddc' # inser SID here
     auth_token = ENV['TWILIO_KEY'] # insert twilio key here
 
     @client = Twilio::REST::Client.new account_sid, auth_token 
